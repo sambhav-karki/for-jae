@@ -345,7 +345,7 @@ function showSentence(idx) {
   const last = current === sentences.length - 1;
   document.getElementById('nextBtn').style.display  = last ? 'none'         : 'inline-block';
   document.getElementById('closeBtn').style.display = last ? 'inline-block' : 'none';
-  typeText(document.getElementById('letterText'), sentences[current], 64);
+  typeText(document.getElementById('letterText'), sentences[current], 50);
 }
 
 function nextSentence() { if (current < sentences.length - 1) showSentence(current + 1); }
