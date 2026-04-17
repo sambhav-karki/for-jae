@@ -159,6 +159,22 @@ body::before {
   );
   background-position:0 46px;
 }
+
+.x-btn {
+  position: absolute;
+  top: 14px; right: 16px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #e8c4b8;
+  background: transparent;
+  color: #c4735a;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .15s;
+}
+.x-btn:hover  { background: #fde8da; transform: scale(1.1); }
+.x-btn:active { transform: scale(.95); }
 .letter-overlay.show .letter-card { transform:scale(1) translateY(0); }
 
 .letter-card::before {
@@ -241,6 +257,7 @@ body::before {
 <!-- letter modal — lives outside envelope, z-index 200 -->
 <div class="letter-overlay" id="letterOverlay">
   <div class="letter-card">
+    <button class="x-btn" onclick="closeEnvelope()">✕</button>
     <div class="letter-icon">💌</div>
     <div class="letter-text" id="letterText"><span class="cursor"></span></div>
     <div class="dots" id="dots"></div>
@@ -254,6 +271,7 @@ body::before {
 
 <script>
 const sentences = [
+"This might be the heaviest thing i've done yet, but please don't panic",
   "I don't know how to slow this down, even if I wanted to",
 "Somewhere between the long calls and seein your smile, I caught feelings",
 "You're the first person I've truly wanted to be understood by",
@@ -306,7 +324,7 @@ function showSentence(idx) {
   const last = current === sentences.length - 1;
   document.getElementById('nextBtn').style.display  = last ? 'none'         : 'inline-block';
   document.getElementById('closeBtn').style.display = last ? 'inline-block' : 'none';
-  typeText(document.getElementById('letterText'), sentences[current], 36);
+  typeText(document.getElementById('letterText'), sentences[current], 64);
 }
 
 function nextSentence() { if (current < sentences.length - 1) showSentence(current + 1); }
